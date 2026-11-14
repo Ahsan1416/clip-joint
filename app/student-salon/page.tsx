@@ -6,7 +6,6 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
-import PitchAuditModal from '@/components/PitchAuditModal';
 import {
   Sparkles,
   MapPin,
@@ -35,13 +34,11 @@ const studentPrices = [
 
 export default function StudentSalonPage() {
   const [bookingOpen, setBookingOpen] = useState(false);
-  const [pitchOpen, setPitchOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#09090b] text-white flex flex-col selection:bg-amber-400 selection:text-black">
       <Navbar
         onOpenBooking={() => setBookingOpen(true)}
-        onOpenPitch={() => setPitchOpen(true)}
       />
 
       <main className="flex-1 pt-28 pb-20">
@@ -187,11 +184,6 @@ export default function StudentSalonPage() {
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}
         defaultType="salon"
-      />
-
-      <PitchAuditModal
-        isOpen={pitchOpen}
-        onClose={() => setPitchOpen(false)}
       />
     </div>
   );

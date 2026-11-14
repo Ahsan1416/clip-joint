@@ -6,7 +6,6 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BookingModal from '@/components/BookingModal';
-import PitchAuditModal from '@/components/PitchAuditModal';
 import {
   MapPin,
   Phone,
@@ -21,7 +20,6 @@ import {
 
 export default function ContactPage() {
   const [bookingOpen, setBookingOpen] = useState(false);
-  const [pitchOpen, setPitchOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     name: '',
@@ -40,7 +38,6 @@ export default function ContactPage() {
     <div className="min-h-screen bg-[#09090b] text-white flex flex-col selection:bg-amber-400 selection:text-black">
       <Navbar
         onOpenBooking={() => setBookingOpen(true)}
-        onOpenPitch={() => setPitchOpen(true)}
       />
 
       <main className="flex-1 pt-28 pb-20">
@@ -313,11 +310,6 @@ export default function ContactPage() {
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}
         defaultType="education"
-      />
-
-      <PitchAuditModal
-        isOpen={pitchOpen}
-        onClose={() => setPitchOpen(false)}
       />
     </div>
   );

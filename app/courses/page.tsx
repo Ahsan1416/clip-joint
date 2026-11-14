@@ -7,7 +7,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CourseCard, { CourseData } from '@/components/CourseCard';
 import BookingModal from '@/components/BookingModal';
-import PitchAuditModal from '@/components/PitchAuditModal';
 import {
   GraduationCap,
   Award,
@@ -154,7 +153,6 @@ const faqs = [
 
 export default function CoursesPage() {
   const [bookingOpen, setBookingOpen] = useState(false);
-  const [pitchOpen, setPitchOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState('SHB30416 - Certificate III in Hairdressing');
 
   const handleApply = (courseTitle: string) => {
@@ -166,7 +164,6 @@ export default function CoursesPage() {
     <div className="min-h-screen bg-[#09090b] text-white flex flex-col selection:bg-amber-400 selection:text-black">
       <Navbar
         onOpenBooking={() => setBookingOpen(true)}
-        onOpenPitch={() => setPitchOpen(true)}
       />
 
       <main className="flex-1 pt-28 pb-20">
@@ -295,11 +292,6 @@ export default function CoursesPage() {
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}
         defaultType="education"
-      />
-
-      <PitchAuditModal
-        isOpen={pitchOpen}
-        onClose={() => setPitchOpen(false)}
       />
     </div>
   );

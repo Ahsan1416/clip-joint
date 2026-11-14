@@ -8,7 +8,6 @@ import Footer from '@/components/Footer';
 import CourseCard, { CourseData } from '@/components/CourseCard';
 import SalonServiceTable from '@/components/SalonServiceTable';
 import BookingModal from '@/components/BookingModal';
-import PitchAuditModal from '@/components/PitchAuditModal';
 import {
   GraduationCap,
   Scissors,
@@ -87,7 +86,6 @@ export default function HomePage() {
   const [activePortal, setActivePortal] = useState<'all' | 'education' | 'salons'>('all');
   const [bookingOpen, setBookingOpen] = useState(false);
   const [bookingType, setBookingType] = useState<'education' | 'salon'>('education');
-  const [pitchOpen, setPitchOpen] = useState(false);
 
   const handleOpenBooking = (type: 'education' | 'salon' = 'education') => {
     setBookingType(type);
@@ -99,21 +97,7 @@ export default function HomePage() {
       {/* Top Navbar */}
       <Navbar
         onOpenBooking={handleOpenBooking}
-        onOpenPitch={() => setPitchOpen(true)}
       />
-
-      {/* Floating Pitch Badge (For pitching client) */}
-      <div className="fixed bottom-6 right-6 z-40">
-        <button
-          onClick={() => setPitchOpen(true)}
-          className="group relative flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 text-black font-bold text-xs uppercase tracking-wider shadow-2xl shadow-amber-500/40 hover:scale-105 active:scale-95 transition-all border border-amber-300"
-        >
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping absolute -top-1 -right-1" />
-          <ShieldCheck className="w-4 h-4 text-black" />
-          <span>Pitch Audit: 100/100 SEO & Security</span>
-          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-        </button>
-      </div>
 
       <main className="flex-1">
         {/* HERO SECTION */}
@@ -719,11 +703,6 @@ export default function HomePage() {
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}
         defaultType={bookingType}
-      />
-
-      <PitchAuditModal
-        isOpen={pitchOpen}
-        onClose={() => setPitchOpen(false)}
       />
     </div>
   );

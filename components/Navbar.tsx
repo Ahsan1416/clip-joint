@@ -4,14 +4,13 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Phone, Calendar, Menu, X, GraduationCap, Scissors, ShieldCheck, ChevronRight } from 'lucide-react';
+import { Phone, Calendar, Menu, X, GraduationCap, Scissors, ChevronRight } from 'lucide-react';
 
 interface NavbarProps {
   onOpenBooking?: (type?: 'education' | 'salon') => void;
-  onOpenPitch?: () => void;
 }
 
-export default function Navbar({ onOpenBooking, onOpenPitch }: NavbarProps) {
+export default function Navbar({ onOpenBooking }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -66,16 +65,6 @@ export default function Navbar({ onOpenBooking, onOpenPitch }: NavbarProps) {
               <Scissors className="w-3 h-3 text-amber-400" />
               Salon: (08) 8267 4044
             </a>
-            {onOpenPitch && (
-              <button
-                onClick={onOpenPitch}
-                className="bg-amber-400/10 hover:bg-amber-400/20 text-amber-300 border border-amber-400/30 px-2 py-0.5 rounded-full flex items-center gap-1 text-[10px] font-semibold tracking-normal transition-all whitespace-nowrap"
-                title="View Next.js Transformation & SEO Performance Audit"
-              >
-                <ShieldCheck className="w-3 h-3 text-amber-400" />
-                Pitch / SEO 100
-              </button>
-            )}
           </div>
         </div>
 
@@ -147,15 +136,6 @@ export default function Navbar({ onOpenBooking, onOpenPitch }: NavbarProps) {
                 <Calendar className="w-3 h-3" />
                 Book
               </button>
-              {onOpenPitch && (
-                <button
-                  onClick={onOpenPitch}
-                  className="bg-amber-400/20 text-amber-300 p-2 rounded-lg border border-amber-400/30 text-xs"
-                  title="SEO 100 Pitch"
-                >
-                  <ShieldCheck className="w-4 h-4" />
-                </button>
-              )}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 text-zinc-300 hover:text-white bg-white/5 rounded-lg border border-white/10"
